@@ -70,7 +70,6 @@ class HttpFoundationFactory implements HttpFoundationFactoryInterface
             $server,
             $streamed ? $psrRequest->getBody()->detach() : $psrRequest->getBody()->__toString()
         );
-        $request->headers->replace($psrRequest->getHeaders());
 
         return $request;
     }
