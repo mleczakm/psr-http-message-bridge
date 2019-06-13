@@ -49,7 +49,7 @@ class HttpFoundationFactory implements HttpFoundationFactoryInterface
 
         if ($uri instanceof UriInterface) {
             $server['SERVER_NAME'] = $uri->getHost();
-            $server['SERVER_PORT'] = $uri->getPort();
+            $server['SERVER_PORT'] = $uri->getPort() ?: $uri->getScheme() === 'https' ? 443 : 80;
             $server['REQUEST_URI'] = $uri->getPath();
             $server['QUERY_STRING'] = $uri->getQuery();
         }
