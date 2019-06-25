@@ -55,6 +55,10 @@ class HttpFoundationFactory implements HttpFoundationFactoryInterface
         }
 
         $server['REQUEST_METHOD'] = $psrRequest->getMethod();
+        
+        if($uri->getScheme() === 'https'){
+            $server['HTTPS'] = 'on';
+        }
 
         $server = array_replace($server, $psrRequest->getServerParams());
 
